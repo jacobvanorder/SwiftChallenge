@@ -87,8 +87,22 @@ func checkAnswer(guess: [String: GPA]) -> Bool {
 }
 
 //convert letter grades to GPA, filter by who was better than B average, sort alphabetically
+var goodStudents: [String: GPA] = [:]
 
-//checkAnswer(<#your answer here#>)
+let sortedKeys = Array(gradeList.keys).sorted(<)
+
+for studentName in sortedKeys {
+    let gpa = GPA(stringValue:gradeList[studentName]!)
+    if (gpa.rawValue > 3.0) {
+        goodStudents[studentName] = gpa
+    }
+}
+
+print(goodStudents)
+
+checkAnswer(goodStudents)
+
+
 
 
 
